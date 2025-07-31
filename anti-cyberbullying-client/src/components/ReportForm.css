@@ -1,0 +1,83 @@
+ /* src/components/ReportForm.css */
+
+.report-form-container {
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #1a1a1a;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.report-title {
+  font-size: 2rem;
+  color: #00f0ff;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.report-title::before {
+  content: '🛡️ ';
+}
+
+.report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.report-input,
+.report-textarea {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.report-textarea {
+  resize: vertical;
+  min-height: 200px;
+  font-family: inherit;
+}
+
+.report-checkbox-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  gap: 8px;
+  color: #ccc;
+}
+
+.submit-btn {
+  background-color: #00c4cc;
+  color: #fff;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #009fa6;
+}
+
+.message {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #00f0ff;
+}
+
+/* Remove light mode vars – dark mode only */
+:root {
+  --bg: #1a1a1a;
+  --text: #ffffff;
+  --input-bg: #2a2a2a;
+}

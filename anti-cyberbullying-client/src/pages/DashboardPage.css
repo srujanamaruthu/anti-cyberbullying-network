@@ -1,0 +1,18 @@
+ /* src/pages/DashboardPage.css */
+
+.dashboard-container {
+  padding: 30px;
+  max-width: 900px;
+  margin: auto;
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #00c3ff;
+}

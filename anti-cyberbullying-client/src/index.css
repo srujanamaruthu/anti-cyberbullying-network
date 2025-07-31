@@ -1,0 +1,188 @@
+/* Reset & Base */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a;
+  color: #f2f2f2;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+/* Heading */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #66ccff;
+}
+
+/* Buttons */
+button {
+  padding: 10px 18px;
+  margin: 10px 5px;
+  background-color: #66ccff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #44aadd;
+  transform: scale(1.03);
+}
+
+/* Input/Textarea Form */
+.report-form textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 8px;
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  resize: vertical;
+  font-size: 1rem;
+}
+
+/* Report list */
+.report-list {
+  margin-top: 20px;
+}
+
+.report-card {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  color: #f2f2f2;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.report-card:hover {
+  transform: scale(1.01);
+}
+
+.report-card small {
+  display: block;
+  margin-top: 8px;
+  color: #ccc;
+}
+
+/* Message */
+.message {
+  color: lightgreen;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Report Items */
+.report-item {
+  background-color: #111;
+  color: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
+}
+
+.report-item h4,
+.report-item p,
+.report-item small {
+  margin: 0.2rem 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 20px 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+.success-msg {
+  background-color: #22c55e;
+  color: white;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+.form-container {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 450px;
+  margin: 80px auto;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-logo {
+  font-size: 2.5rem;
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.dark-input {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.dark-button {
+  background-color: #00c4cc;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dark-button:hover {
+  background-color: #00a6ad;
+}
+
+.error-msg {
+  color: #ff4c4c;
+  margin-bottom: 20px;
+  text-align: center;
+}

@@ -14,20 +14,20 @@ This web application provides a secure and anonymous space for students to repor
 
 ## 🛠️ Technology Stack
 
-### Frontend:
+### 🎨 Frontend:
 - HTML, CSS, JavaScript
 - React.js
 - Axios
 
-### Backend:
+### 🔧 Backend:
 - Node.js
 - Express.js
 
-### Database:
+### 🗄️ Database:
 - MongoDB (MongoDB Atlas)
 
-### APIs / Libraries:
-- JSON Web Tokens (JWT) for secure authentication
+### 🔐 Security & Libraries:
+- JSON Web Tokens (JWT) for authentication
 - bcrypt.js for password hashing
 
 ---
@@ -39,17 +39,17 @@ User → Frontend (React) → Backend (Express API) → MongoDB (Database)
 
 - User interacts with the frontend (login, register, submit reports)
 - Frontend sends API requests to the backend
-- Backend handles business logic and communicates with MongoDB
+- Backend processes requests and interacts with MongoDB
 
 ---
 
 ## 🗃️ Database Schema
 
-### Users Collection:
+### 👤 Users Collection:
 - `email` (String)
 - `password` (Hashed String)
 
-### Reports Collection:
+### 📝 Reports Collection:
 - `type` (String)
 - `description` (String)
 - `date` (Timestamp)
@@ -62,7 +62,7 @@ User → Frontend (React) → Backend (Express API) → MongoDB (Database)
 
 - `POST /api/auth/register`  
   Registers a new user  
-  **Request body**:
+  **Request Body**:
   ```json
   {
     "email": "user@example.com",
@@ -71,66 +71,80 @@ User → Frontend (React) → Backend (Express API) → MongoDB (Database)
 
 POST /api/auth/login
 Logs in a user and returns a JWT token
-Response:
 
+Response:
+json
 {
   "token": "your-jwt-token"
 }
 
+
 📝 Report Routes
 POST /api/reports
 Submit an anonymous report
-Request body:
+
+Request Body:
+json
 {
   "type": "Harassment",
   "description": "Being targeted with mean comments online"
 }
+
 GET /api/reports
 Fetch all submitted reports
 
 DELETE /api/reports/:id
 Delete a report by its ID
 
-
-💡 Key Features:
-
-Anonymous reporting system
-Secure login and registration using JWT
-Dark mode responsive UI
-View and delete submitted reports
-MongoDB-based data storage
-Protected routes using middleware
+💡 Key Features
+✅ Anonymous reporting system
+✅ Secure login and registration using JWT
+✅ Dark mode responsive UI
+✅ View and delete submitted reports
+✅ MongoDB-based data storage
+✅ Protected routes using middleware
 
 
 🚀 Deployment
-Live URLs (Replace these with your actual Render URLs):
-Frontend: https://your-frontend-url.onrender.com
+🔷 Deployment Platform
+Frontend was deployed using Vercel
+Chosen for its smooth integration with React apps and GitHub.
+Vercel handles automatic build and deployment from GitHub repositories.
+Set environment variables like backend API URL using Vercel dashboard.
+Backend was deployed using Render
+Render was used to host our Express server with auto-redeploy on Git updates.
+MongoDB Atlas URI and JWT secret were stored securely in environment settings.
 
-Backend: https://your-backend-url.onrender.com
 
+🌍 Live URLs
+Frontend (Vercel)
+👉 https://anti-cyberbullying-network.vercel.app
+
+Backend (Render)
+👉 https://anti-cyberbullying-network.onrender.com
 
 💻 Run Locally
-Clone the repo:
+🔧 Clone the repository
 
 git clone https://github.com/srujanamaruthu/anti-cyberbullying-network.git
 
-Navigate to the backend:
+
+🔹 Backend Setup
+
 cd server
 npm install
 npm start
 
-Open a second terminal and navigate to frontend:
+🔹 Frontend Setup
+Open another terminal:
 
 cd client
 npm install
 npm start
-🙋‍♀️ Author
+
+👩‍💻 Author
 Srujana Maruthu
-📧 Email: srujanamaruthu@gmail.com
+📧 Email: srujana_maruthu@srmap.edu.in.com
 📱 Mobile: 9182443247
 🌐 GitHub: @srujanamaruthu
-
-📜 License
-This project is built for educational purposes only.
-
 

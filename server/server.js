@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const path = require('path');
 
 // Load environment variables
 dotenv.config();
@@ -11,13 +10,15 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 
-// Middleware
+// Middleware to parse JSON
 app.use(express.json());
 
-// CORS Setup — allow frontend from Vercel + allow others during development
+// ----------------------------
+// ✅ CORS Configuration
+// ----------------------------
 const allowedOrigins = [
-  "https://anti-cyberbullying-network.vercel.app", // ✅ Production
-  "http://localhost:3000",                        // ✅ Development
+  "https://anti-cyberbullying-network.vercel.app", // Vercel frontend
+  "http://localhost:3000",                         // Local development
 ];
 
 app.use(cors({
@@ -28,24 +29,32 @@ app.use(cors({
       callback(new Error("CORS not allowed for this origin: " + origin));
     }
   },
-  methods: ["GET", "POST", "DELETE"],
-  credentials: true
+  credentials: true, // allow sending cookies/auth headers
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
 
-// Import routes
+// ----------------------------
+// ✅ Route Imports
+// ----------------------------
 const reportRoutes = require('./routes/reports');
 const authRoutes = require('./routes/auth');
 
-// Use routes
+// ----------------------------
+// ✅ Use Routes
+// ----------------------------
 app.use('/api/reports', reportRoutes);
 app.use('/api/auth', authRoutes);
 
-// Basic route to check server status
+// ----------------------------
+// ✅ Test Route
+// ----------------------------
 app.get('/', (req, res) => {
   res.send('🛡️ Anti-Cyberbullying Backend is running');
 });
 
-// MongoDB Connection
+// ----------------------------
+// ✅ MongoDB Connection
+// ----------------------------
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -55,7 +64,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
   });
 })
 .catch((err) => {

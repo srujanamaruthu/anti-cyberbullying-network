@@ -3,30 +3,44 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
-// Load .env variables
+// Load environment variables
 dotenv.config();
 
-// Create Express app
+// Initialize Express app
 const app = express();
 
-// Allow CORS only from your frontend Vercel app
+// Middleware
+app.use(express.json());
+
+// CORS Setup — allow frontend from Vercel + allow others during development
+const allowedOrigins = [
+  "https://anti-cyberbullying-network.vercel.app", // ✅ Production
+  "http://localhost:3000",                        // ✅ Development
+];
+
 app.use(cors({
-  origin: "https://anti-cyberbullying-network.vercel.app",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed for this origin: " + origin));
+    }
+  },
   methods: ["GET", "POST", "DELETE"],
   credentials: true
 }));
 
-app.use(express.json());
-
-// Routes
+// Import routes
 const reportRoutes = require('./routes/reports');
 const authRoutes = require('./routes/auth');
 
+// Use routes
 app.use('/api/reports', reportRoutes);
 app.use('/api/auth', authRoutes);
 
-// Test route
+// Basic route to check server status
 app.get('/', (req, res) => {
   res.send('🛡️ Anti-Cyberbullying Backend is running');
 });
@@ -38,11 +52,12 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => {
   console.log('✅ Connected to MongoDB');
+
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
   });
 })
 .catch((err) => {
-  console.error('❌ MongoDB connection error:', err);
+  console.error('❌ MongoDB connection error:', err.message);
 });

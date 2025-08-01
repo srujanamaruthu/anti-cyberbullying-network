@@ -9,34 +9,43 @@ const ReportForm = ({ onReportSubmitted }) => {
   const [description, setDescription] = useState('');
   const [anonymous, setAnonymous] = useState(true);
   const [message, setMessage] = useState('');
+  const [error, setError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage('');
+    setError(false);
 
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:5000/api/reports',
+        'https://anti-cyberbullying-backend.onrender.com/api/reports',
         { title, type, description, anonymous },
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
           },
         }
       );
 
       setMessage(response.data.message || 'Report submitted successfully!');
+      setError(false);
+
       setTitle('');
       setType('');
       setDescription('');
       setAnonymous(true);
 
-      // Call parent callback to refresh the list
       if (onReportSubmitted) {
         onReportSubmitted();
       }
     } catch (error) {
-      setMessage(error.response?.data?.message || 'Something went wrong.');
+      setError(true);
+      setMessage(
+        error.response?.data?.message ||
+          'Something went wrong. Please try again.'
+      );
     }
   };
 
@@ -93,7 +102,12 @@ const ReportForm = ({ onReportSubmitted }) => {
 
         <button type="submit" className="submit-btn">Submit Report</button>
       </form>
-      {message && <p className="message">{message}</p>}
+
+      {message && (
+        <p className={error ? 'message error' : 'message success'}>
+          {message}
+        </p>
+      )}
     </div>
   );
 };

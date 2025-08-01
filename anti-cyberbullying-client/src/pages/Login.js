@@ -15,29 +15,33 @@ const Login = ({ onLogin }) => {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch('https://anti-cyberbullying-backend.onrender.com/api/auth/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ email, password }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.message || 'Login failed');
+        console.error('Login error response:', data); // Debugging
+        throw new Error(data.message || 'An error occurred during login. Please try again.');
       }
 
-      // Store token and email persistently
+      // Store token and email
       localStorage.setItem('token', data.token);
       localStorage.setItem('userEmail', email);
 
-      // Call the onLogin prop to update parent App state
+      // Call login handler
       onLogin(email, data.token);
 
-      // Navigate to dashboard
+      // Redirect to dashboard
       navigate('/dashboard');
     } catch (err) {
-      setError(err.message || 'Login error');
+      console.error('Login exception:', err); // Optional: Log to console
+      setError(err.message || 'An unknown error occurred.');
     }
   };
 

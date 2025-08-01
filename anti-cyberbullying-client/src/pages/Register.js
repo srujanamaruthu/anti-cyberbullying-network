@@ -1,9 +1,9 @@
-// src/pages/Register.jsx
+// src/pages/Register.js
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "./Auth.css"; // Unified styling
+import "./Auth.css";
 
-function Register() {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPwd, setShowPwd] = useState(false);
@@ -17,7 +17,7 @@ function Register() {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/register", {
+      const res = await fetch("https://anti-cyberbullying-network.onrender.com/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,16 +26,16 @@ function Register() {
       });
 
       const data = await res.json();
-      if (res.ok) {
-        setMessage("Registration successful!");
-        setError(false);
-        navigate("/login");
-      } else {
-        setMessage(data.message || "Registration failed");
-        setError(true);
+
+      if (!res.ok) {
+        throw new Error(data.message || "Registration failed");
       }
+
+      setMessage("Registration successful! Redirecting...");
+      setError(false);
+      setTimeout(() => navigate("/login"), 1500);
     } catch (err) {
-      setMessage("An error occurred. Please try again.");
+      setMessage(err.message || "An error occurred. Please try again.");
       setError(true);
     }
   };
@@ -45,6 +45,7 @@ function Register() {
       <div className="auth-card animate">
         <h1 className="auth-logo">🛡️</h1>
         <h2 className="auth-title">Register</h2>
+
         <form onSubmit={handleSubmit} className="auth-form">
           <label htmlFor="email">Email</label>
           <input
@@ -83,12 +84,13 @@ function Register() {
             </p>
           )}
         </form>
+
         <p className="auth-switch">
           Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>
   );
-}
+};
 
 export default Register;

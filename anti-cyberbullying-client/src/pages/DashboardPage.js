@@ -12,7 +12,7 @@ const DashboardPage = () => {
   const fetchReports = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('https://anti-cyberbullying-backend.onrender.com/api/reports', {
+      const res = await fetch('https://anti-cyberbullying-network.onrender.com/api/reports', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

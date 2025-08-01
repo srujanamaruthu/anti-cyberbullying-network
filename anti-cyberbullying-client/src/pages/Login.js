@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => {
     setError('');
 
     try {
-      const res = await fetch('https://anti-cyberbullying-backend.onrender.com/api/auth/login', {
+      const res = await fetch('https://anti-cyberbullying-network.onrender.com/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

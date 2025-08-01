@@ -19,7 +19,7 @@ const ReportForm = ({ onReportSubmitted }) => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'https://anti-cyberbullying-backend.onrender.com/api/reports',
+        'https://anti-cyberbullying-network.onrender.com/api/reports',
         { title, type, description, anonymous },
         {
           headers: {

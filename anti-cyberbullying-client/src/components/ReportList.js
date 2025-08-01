@@ -11,7 +11,7 @@ const ReportList = () => {
     const fetchReports = async () => {
       try {
         const token = localStorage.getItem('token'); // optional, based on your backend
-        const response = await axios.get('https://anti-cyberbullying-backend.onrender.com/api/reports', {
+        const response = await axios.get('https://anti-cyberbullying-network.onrender.com/api/reports', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
